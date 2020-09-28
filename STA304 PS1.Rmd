@@ -1,8 +1,9 @@
 ---
-title: "STA304 PS1"
+title: "Toronto Neighbourhood Auto Theft situation from 2014 to 2019"
 author: "Liuxuan Wang"
-date: "9/28/2020"
+date: "9/27/2020"
 output: html_document
+abstract: In this paper we are going to explore the number of Auto Theft cases for each Toronto Neighbourhood from 2014 to 2019. To see if there is any neighbourhood which is unusual. Has the number of Auto Theft cases been varied a lot among years?
 ---
 
 ## Input data
@@ -26,6 +27,17 @@ data <- filter(datastore_resources, row_number()==1) %>% get_resource()
 data
 
 ```
+## Intoduction
+In a modern city like Toronto, Auto theft always exist. As the number of auto mobile vechicles increase, people's methods of preventing the theft are also more ane more advanced. In this paper, we will auto theft problem between 2014 to 2019 using the data about the number of Auto theft in each neighbourhood during this time period. The main finds include that most of the neighbourhoods in Toronto had no more than 50 Auto Theft cases during 2014 to 2019. There were always 5 to 6 neighbourhoods with serious auto theft issues with around 100 cases, or even more than 300. West Humber-Clairville was a neighbourhood whose problem was extremely serious, and even worse in 2019.
+
+In this paper, I choose the data from open data Toronto. The original data set is about the Neighbourhood crime rate of different categories of crime between 2014 and 2019. I draw histograms for each year's Auto theft counts to see the distribution and boxplots to see the centre, spread and outliers. Both the histograms and the boxplots are very similar between years. Also, there isn't much distinction on the median and spread, as well. Therefore, the number of auto theft in each Toronto neighbourhoods hasn't changed much between years. For the neighbourhood which has an extremely high number of auto theft , I have searched for the online resource that it is a place with large number of theft. And the data shows that it still suffers from the problem.
+
+The paper first includes original data along with a description. The following are graphs including 6 histograms and 6 boxplots. The discussion and reference are under the graphs. Since the data shows that the number of auto theft in Toronto neighbourhoods hasn't changed much, it may indicate that there is some actions needed in the future to mitigate the issue. This analyze also has limitation and weakness. Since the data ends by 2019, it is not accurate to say that the situation now is still align with the situation reflected from the data. If we want it to be more accurate, we still need to collect the data in the future and do the same analyze to compare.
+
+
+
+
+
 ## Description of dataset
 ### Background:
 This dataset is about the neighbourhood crime data from 2014 to 2019. It includes the number of auto theft, assault, robbery, homicide, theft over and break and enter for each year. Also, based on the 2016 Census population, it includes five year averages and neighbourhood crime rates per 100,000 people.
@@ -80,10 +92,18 @@ ggplot(data, aes(AutoTheft_2019, fill=AutoTheft_2019))+ geom_histogram(stat = "c
 
 ```{r, echo = FALSE}
 # Boxplots:
-year = c('2014', '2015', '2016', '2017', '2018', '2019')
-number_of_autotheft = c(data$AutoTheft_2019, data$AutoTheft_2018, data$AutoTheft_2017, data$AutoTheft_2016, data$AutoTheft_2015, data$AutoTheft_2014)
-autotheft_data = data.frame(year, number_of_autotheft)
-ggplot(autotheft_data, aes(x = year, y = number_of_autotheft, fill = year )) + geom_boxplot(alpha = 0.3) + theme(legend.position = "none")+labs(x = "Year", y = "Number of Auto theft", title = "Boxplots of number of Auto Theft from 2019 to 2014", caption = "Source: Toronto Police Services")
+ggplot(data, aes(x='', y = AutoTheft_2014))+geom_boxplot(color = "pink")+labs(x = "", y = "Number of Auto theft", title = "Boxplots of number of Auto Theft in 2014", caption = "Source: Toronto Police Services")
+
+ggplot(data, aes(x='', y = AutoTheft_2015))+geom_boxplot(color = "red")+labs(x = "", y = "Number of Auto theft", title = "Boxplots of number of Auto Theft in 2015", caption = "Source: Toronto Police Services")
+
+ggplot(data, aes(x='', y = AutoTheft_2016))+geom_boxplot(color = "yellow")+labs(x = "", y = "Number of Auto theft", title = "Boxplots of number of Auto Theft in 2016", caption = "Source: Toronto Police Services")
+
+ggplot(data, aes(x='', y = AutoTheft_2017))+geom_boxplot(color = "grey")+labs(x = "", y = "Number of Auto theft", title = "Boxplots of number of Auto Theft in 2017", caption = "Source: Toronto Police Services")
+
+ggplot(data, aes(x='', y = AutoTheft_2018))+geom_boxplot(color = "blue")+labs(x = "", y = "Number of Auto theft", title = "Boxplots of number of Auto Theft in 2018", caption = "Source: Toronto Police Services")
+
+ggplot(data, aes(x='', y = AutoTheft_2019))+geom_boxplot(color = "purple")+labs(x = "", y = "Number of Auto theft", title = "Boxplots of number of Auto Theft in 2019", caption = "Source: Toronto Police Services")
+
 
 
 ```
@@ -93,4 +113,11 @@ In this assignment, I mainly focus on exploring the situation of AutoTheft in To
 
 Firstly, I draw a histogram of the number of Auto Theft for each year. The distributions of the number of Auto Theft for each year from 2014 to 2019 are very similar. It shows a skewness to the right. The maximum frequency often falls around 10 to 15. For year of 2015 and 2016, the shape of distribution come to be bimodal, the maximum frequency also falls around 20 to 25 except for the one we have mentioned. From the right side of each histograms, we can also see some data that could be outliers, which show extremely high quantity of auto thefts. In 2017, the number of neighbourhoods with more than 100 Auto Theft cases is 1, which is the least. In 2019, there are 5 neighbourhoods with more than 100 auto thefts, which is the most. For each year, there is a neighbourhood called West Humber-Clairville having around 300 AutoTheft cases, even close to 500 in 2019. 
 
-Secondly, we put each year's Toronto neighbourhood auto theft data into boxplots to see the centre, spread and outliers.
+Secondly, we put each year's Toronto neighbourhood auto theft data into boxplots to see the centre, spread and outliers. The shapes of boxplots for each year are not so much different. All of their median are around 20 per year. 75% of data are below 50 per year, which is very concentrated. Also, for each year the IQR is about 30, not very large. Each year, there will be 5 to 6 upper outliers while there isn't any outliers below. 
+
+Overall, except for the fluctuation of outliers, the centre, spread and the number of outliers of Auto Theft in Toronto Neighbourhoods has been relativley steady from 2014 to 2019. The Auto Theft problem is not very serious for most neighbourhoods. While for neighbourhoods with serious Auto Theft problem, the situation has not been mitigated, yet.
+
+
+## Reference
+https://open.toronto.ca/dataset/neighbourhood-crime-rates/
+https://humbernews.ca/2012/10/humber-north-area-ranks-2nd-in-theft-rate/
